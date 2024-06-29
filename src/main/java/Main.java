@@ -17,21 +17,23 @@ public class Main {
 
             while (carName.isEmpty()) {
                 System.out.print("Название автомобиля #" + (i + 1) + ": ");
-                carName = scanner.next();
+                carName = scanner.nextLine();
             }
 
             while (true) {
                 System.out.print("Скорость автомобиля #" + (i + 1) + ": ");
-                carSpeed = scanner.nextInt();
+                carSpeed = scanner.hasNextInt() ? scanner.nextInt() : -1;
 
                 if (carSpeed < 0 || carSpeed > 250) {
                     System.out.println("Скорость автомобиля должна быть в значении от 0 до 250");
+                    scanner.next();
                 } else {
                     break;
                 }
             }
 
             race.Registration(new Car(carName, carSpeed));
+            scanner.nextLine();
         }
 
         System.out.println();
